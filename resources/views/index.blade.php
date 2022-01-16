@@ -30,7 +30,7 @@ https://templatemo.com/tm-520-highway
 
     <nav>
         <div class="logo">
-            <a href="index.blade.php">High<em>way</em></a>
+            <a href="index.blade.php">Plotti<em>Botti</em></a>
         </div>
         <div class="menu-icon">
         <span></span>
