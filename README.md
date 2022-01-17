@@ -1,44 +1,40 @@
-# Project Title
+# Plotti Botti
 
-Simple overview of use/purpose.
+Simple website for sharing pictures and artwork with users and voting system.
 
-## Description
+[comment]: <> (## Description)
 
-An in-depth paragraph about your project and overview of use.
+[comment]: <> (An in-depth paragraph about your project and overview of use.)
 
 ## Getting Started
 
 ### Dependencies
 
-* Describe any prerequisites, libraries, OS version, etc., needed before installing program.
-* ex. Windows 10
+* Require Docker V20.0 or higher
 
 ### Installing
 
-* How/where to download your program
-* Any modifications needed to be made to files/folders
+* Clone the repo
+* run docker in the project directory
 
 ### Executing program
 
-* How to run the program
-* Step-by-step bullets
+* inside you project directory run:
+
 ```
-code blocks for commands
+~$ docker-compose up -d
 ```
 
 ## Help
 
-Any advise for common problems or issues.
-```
-command to run if program contains helper info
-```
+Any problems please contact me
 
 ## Authors
 
 Contributors names and contact info
 
-ex. Dominique Pizzie  
-ex. [@DomPizzie](https://twitter.com/dompizzie)
+Nico Deblaow  
+[@DomPizzie](https://twitter.com/dompizzie)
 
 ## Version History
 
@@ -50,7 +46,7 @@ ex. [@DomPizzie](https://twitter.com/dompizzie)
 
 ## License
 
-This project is licensed under the [NAME HERE] License - see the LICENSE.md file for details
+This project is licensed under the open source License - see the LICENSE.md file for details
 
 ## Acknowledgments
 
