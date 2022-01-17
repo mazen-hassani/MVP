@@ -50,7 +50,7 @@ return [
     'channels' => [
         'stack' => [
             'driver' => 'stack',
-            'channels' => ['single'],
+            'channels' => ['daily', 'flare'],
             'ignore_exceptions' => false,
         ],
 
@@ -77,8 +77,6 @@ return [
             'username' => 'Laravel Log',
             'emoji' => ':boom:',
             'level' => env('LOG_LEVEL', 'critical'),
-            'channels' => ['daily', 'flare'],
-            'ignore_exceptions' => false,
         ],
 
         'papertrail' => [
