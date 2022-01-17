@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Plotti Botti - 500 - Internal Error</title>
     <link href="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css') }}" rel="stylesheet">
-    <link href="{{ URL::asset('css/500style.css'); }} " rel="stylesheet">
+    <link href="{{ URL::asset('css/500style.css') }} " rel="stylesheet">
 {{--  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">--}}
 {{--<link rel="stylesheet" href="./style.css">--}}
 
