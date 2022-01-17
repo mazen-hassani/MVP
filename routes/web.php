@@ -18,8 +18,8 @@ Route::get('/', function () {
 });
 
 Route::get('/error', function () {
-//    abort(500);
-    throw new Exception("ERROR");
+    abort(500);
+//    throw new Exception("ERROR");
 });
 
 Route::get('/dashboard', function () {
