@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Image extends Model
 {
-    protected $fillable = [ 'org_path', 'thumbnail_path', 'votes', 'user_id', 'description'];
+    protected $fillable = ['org_path', 'thumbnail_path', 'votes', 'user_id', 'description'];
     use HasFactory;
 }
