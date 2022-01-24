@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', \App\Http\Controllers\WelcomeController::class);
 
 Route::get('/error', function () {
-    throw new Exception("ERROR");
+    throw new Exception('ERROR');
 });
 
 Route::resource('images', ImageController::class)->middleware('auth');
