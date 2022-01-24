@@ -4,21 +4,19 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class Footer extends Component
+class VideoContainer extends Component
 {
-    public $company;
-    public $designer;
+    public $link;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($company, $designer)
+    public function __construct($link)
     {
         //
-        $this->company = $company;
-        $this->designer = $designer;
+        $this->link = $link;
     }
 
     /**
@@ -28,6 +26,6 @@ class Footer extends Component
      */
     public function render()
     {
-        return view('layouts.footer');
+        return view('layouts.video-container');
     }
 }
