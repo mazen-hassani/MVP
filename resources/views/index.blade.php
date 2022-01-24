@@ -7,5 +7,5 @@
             @endforeach
         </div>
     </div>
-    <x-footer company="Harbour.Space" designer="Testo"/>
+    <x-footer company="Harbour.Space" designer="Mazen Hassani"/>
 </x-site-layout>
