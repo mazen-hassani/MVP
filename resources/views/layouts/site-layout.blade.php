@@ -3,12 +3,11 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Plotti Botti</title>
+        <title>Plotti Botti | Mazen Hassani</title>
 
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="description" content="">
-    {{--    <meta name="viewport" content="width=device-width, initial-scale=1">--}}
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
         <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -35,16 +34,11 @@
 
             <!-- header -->
             <div class="max-w-6xl mx-auto py-4  text-gray-600 text-sm  flex justify-between">
-                <div class="px-6">App name</div>
-                <div class="px-6 flex flex-row justify-center gap-x-6">
-                    <a href="" class="hover:underline decoration-pink-500 decoration-2">Menu item 1</a>
-                    <a href="" class="hover:underline decoration-pink-500 decoration-2">Menu item 2</a>
-                    <a href="" class="hover:underline decoration-pink-500 decoration-2">Menu item 3</a>
-                </div>
+                <div class="px-6">Plotti Botti</div>
                 <div class="px-6">
                     @if (Route::has('login'))
                         @auth
-                            <a href="{{ url('/home') }}" class="hover:underline">Home</a>
+                            <a href="{{ url('/dashboard') }}" class="hover:underline">Dashboard</a>
                         @else
                             <a href="{{ route('login') }}" class="hover:underline decoration-pink-500 decoration-2">Log in</a>
                             @if (Route::has('register'))
