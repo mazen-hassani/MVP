@@ -1,4 +1,4 @@
-@extends('books.layout')
+@extends('images.layout')
 
 @section('content')
     <div class="row">
@@ -7,7 +7,7 @@
                 <h2>Add New Image</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('dashboard') }}"> Back</a>
+                <a class="btn btn-primary" href="{{ route('images.index') }}"> Back</a>
             </div>
         </div>
     </div>

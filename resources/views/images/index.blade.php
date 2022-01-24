@@ -1,10 +1,10 @@
-@extends('books.layout')
+@extends('images.layout')
 
 @section('content')
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Images CRUD</h2>
+                <h2>Your Personal Gallery</h2>
             </div>
             <div class="pull-right">
                 <a class="btn btn-success" href="{{ route('images.create') }}"> Create New Image</a>

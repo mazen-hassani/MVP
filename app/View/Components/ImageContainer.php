@@ -6,21 +6,22 @@ use Illuminate\View\Component;
 
 class ImageContainer extends Component
 {
-    public $image;
-    public $user;
+    public $username;
     public $description;
+    public $image_org_path;
+    public $image_thumbnail_path;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($image, $user, $description)
+    public function __construct($image_org_path, $image_thumbnail_path, $username, $description)
     {
-        //
-        $this->image = $image;
-        $this->user = $user;
+        $this->username = $username;
         $this->description = $description;
+        $this->image_org_path = $image_org_path;
+        $this->image_thumbnail_path = $image_thumbnail_path;
     }
 
     /**

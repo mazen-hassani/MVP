@@ -1,18 +1,12 @@
 <x-site-layout>
 <!-- main page area -->
-<div class="w-100 z-0">
-    <div class="block max-w-6xl mx-auto z-0">
-
-        <!-- Hero or so-->
-        <div class="w-100 h-40 bg-gradient-to-br from-blue-400 to-teal-200 text-white p-8">
-            <h1 class="block text-4xl font-bold">Great slogan comes here</h1>
-            <h2 class="block text-2xl font-semi-bold text-blue-50">and a tagline or explanation is printed here</h2>
+    <x-video-container link="highway-loop.mp4"/>
+    <div class="full-screen-portfolio" id="portfolio">
+        <div class="container-fluid">
+            @foreach($images as $image)
+                <x-image-container image_org_path={{$image->org_path}} image_thumbnail_path={{$image->thumbnail_path}} username="{{$image->user_id}}" description="{{$image->description}}"/>
+            @endforeach
         </div>
-
-        <!-- main content -->
-        <main class="bg-white p-6 " style="min-height: 60vh;">
-            Content can come here
-        </main>
     </div>
-</div>
+    <x-footer company="Harbour.Space" designer="Mazen Hassani"/>
 </x-site-layout>
