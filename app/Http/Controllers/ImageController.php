@@ -12,7 +12,8 @@ class ImageController extends Controller
     public function index()
     {
         $images = Image::latest()->paginate(5);
-        return view('images.index',compact('images'))
+
+        return view('images.index', compact('images'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -21,18 +22,16 @@ class ImageController extends Controller
         return view('images.create');
     }
 
-
     public function store(Request $request)
     {
         $request->merge(['user_id'=>auth()->id()]);
         $images = $request->file('files', []);
         $descriptions = $request->input('descriptions', []);
-        for ($i = 0 ; $i < count($images) ; $i++)
-        {
+        for ($i = 0; $i < count($images); $i++) {
             $path = Storage::disk('public')->putFile('images', $images[$i]);
             $image = new Image();
-            $image->votes=1;
-            $image->user_id=auth()->id();
+            $image->votes = 1;
+            $image->user_id = auth()->id();
             $image->org_path = $path;
             $image->description = $descriptions[$i];
             $image->save();
@@ -40,14 +39,14 @@ class ImageController extends Controller
         }
 
         return redirect()->route('images.index')
-            ->with('success','Image added successfully.');
-
+            ->with('success', 'Image added successfully.');
     }
 
     public function destroy(Image $image)
     {
         $image->delete();
+
         return redirect()->route('images.index')
-            ->with('success','Image deleted successfully');
+            ->with('success', 'Image deleted successfully');
     }
 }
