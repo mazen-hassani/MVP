@@ -14,18 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', \App\Http\Controllers\WelcomeController::class);
 
 Route::get('/error', function () {
-    abort(500);
-//    throw new Exception("ERROR");
+    throw new Exception("ERROR");
 });
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
 
 Route::resource('images', ImageController::class)->middleware('auth');
 

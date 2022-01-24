@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Image;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -18,7 +19,8 @@ class WelcomeController extends Controller
      */
     public function __invoke(Request $request)
     {
-        //
-        return view('welcome');
+        $images = Image::all()->shuffle()->take(9);
+//        dd($images);
+        return view('welcome')->with('images', $images);
     }
 }

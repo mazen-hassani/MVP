@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\Compress;
 use App\Models\Image;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ImageController extends Controller
 {
     public function index()
     {
-        $images = Image::all()->latest()->paginate(5);
+        $images = Image::latest()->paginate(5);
         return view('images.index',compact('images'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
@@ -22,18 +24,15 @@ class ImageController extends Controller
 
     public function store(Request $request)
     {
-        //
-        $request->validate([
-            'description' => 'required',
-        ]);
         $request->merge(['user_id'=>auth()->id()]);
         $images = $request->file('files', []);
         $descriptions = $request->input('descriptions', []);
         for ($i = 0 ; $i < count($images) ; $i++)
         {
             $path = Storage::disk('public')->putFile('images', $images[$i]);
-//            dd($path);
             $image = new Image();
+            $image->votes=1;
+            $image->user_id=auth()->id();
             $image->org_path = $path;
             $image->description = $descriptions[$i];
             $image->save();
@@ -47,12 +46,7 @@ class ImageController extends Controller
 
     public function destroy(Image $image)
     {
-        //
-        if (! Gate::allows('update-image', $image)) {
-            abort(403);
-        }
         $image->delete();
-
         return redirect()->route('images.index')
             ->with('success','Image deleted successfully');
     }
