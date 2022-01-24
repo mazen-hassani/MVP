@@ -1,16 +1,16 @@
 <div class="col-md-4 col-sm-6">
     <div class="portfolio-item">
-        <a href="{{$image_org_path}}" data-lightbox="image-1"><div class="thumb">
+        <a href="{{"/storage/".$image}}" data-lightbox="image-1"><div class="thumb">
                 <div class="hover-effect">
                     <div class="hover-content">
                         <h1>{{ $description }} </h1>
-                        @if($user)
+                        @if($username)
                             <p>submitted by {{ $username }}</p>
                         @endif
                     </div>
                 </div>
                 <div class="image">
-                    <img src={{ $image_thumbnail_path }}>
+                    <img src={{"/storage".$thumbnail}}>
                 </div>
             </div></a>
     </div>

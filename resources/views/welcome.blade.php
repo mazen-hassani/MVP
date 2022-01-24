@@ -4,7 +4,10 @@
     <div class="full-screen-portfolio" id="portfolio">
         <div class="container-fluid">
             @foreach($images as $image)
-                <x-image-container image_org_path={{$image->org_path}} image_thumbnail_path={{$image->thumbnail_path}} username="{{$image->user_id}}" description="{{$image->description}}"/>
+                <x-image-container :image="$image->org_path"
+                                   :thumbnail="$image->thumbnail_path"
+                                   username="test"
+                                   description="test" />
             @endforeach
         </div>
     </div>
