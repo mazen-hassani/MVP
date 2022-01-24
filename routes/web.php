@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ImageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,5 +26,7 @@ Route::get('/error', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+Route::resource('images', ImageController::class)->middleware('auth');
 
 require __DIR__.'/auth.php';
