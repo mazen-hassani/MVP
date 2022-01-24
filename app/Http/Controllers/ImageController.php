@@ -7,84 +7,53 @@ use Illuminate\Http\Request;
 
 class ImageController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $images = Image::all()->latest()->paginate(5);
+        return view('images.index',compact('images'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        return view('images.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'description' => 'required',
+        ]);
+        $request->merge(['user_id'=>auth()->id()]);
+        $images = $request->file('files', []);
+        $descriptions = $request->input('descriptions', []);
+        for ($i = 0 ; $i < count($images) ; $i++)
+        {
+            $path = Storage::disk('public')->putFile('images', $images[$i]);
+//            dd($path);
+            $image = new Image();
+            $image->org_path = $path;
+            $image->description = $descriptions[$i];
+            $image->save();
+            Compress::dispatch($image);
+        }
+
+        return redirect()->route('images.index')
+            ->with('success','Image added successfully.');
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param \App\Models\Image $image
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Image $image)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param \App\Models\Image $image
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Image $image)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Image        $image
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Image $image)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param \App\Models\Image $image
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Image $image)
     {
         //
+        if (! Gate::allows('update-image', $image)) {
+            abort(403);
+        }
+        $image->delete();
+
+        return redirect()->route('images.index')
+            ->with('success','Image deleted successfully');
     }
 }
