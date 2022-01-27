@@ -34,7 +34,7 @@
 
             <!-- header -->
             <div class="max-w-6xl mx-auto py-4  text-gray-600 text-sm  flex justify-between">
-                <div class="px-6">Plotti Botti</div>
+                <div class="px-6"><a href="/">Plotti Botti</a></div>
                 <div class="px-6">
                     @if (Route::has('login'))
                         @auth
