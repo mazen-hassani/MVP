@@ -4,14 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Jobs\Compress;
 use App\Models\Image;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class ImageController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $images = Image::latest()->paginate(5);
+        $user_id = auth()->id();
+        $user = User::find($user_id);
+        $images = $user->images()->latest()->paginate(5);
 
         return view('images.index', compact('images'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
