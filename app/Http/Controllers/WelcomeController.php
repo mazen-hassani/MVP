@@ -19,8 +19,8 @@ class WelcomeController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $images = Image::all()->shuffle()->take(9);
-//        dd($images);
+        $images = Image::with('votes')->get()->take(36);
+
         return view('welcome')->with('images', $images);
     }
 }
