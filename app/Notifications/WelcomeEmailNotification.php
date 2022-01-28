@@ -22,7 +22,7 @@ class WelcomeEmailNotification extends Notification
 
     public function toMail($notifiable)
     {
-        return (new MailMessage)
+        return (new MailMessage())
                     ->line('Welcome to Plotti Botti Website.')
                     ->action('Go to your Dashboard and add new images :D', url('/images'))
                     ->line('Thank you for using our application!');
