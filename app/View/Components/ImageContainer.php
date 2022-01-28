@@ -10,25 +10,21 @@ class ImageContainer extends Component
     public $description;
     public $image;
     public $thumbnail;
+    public $id;
+    public $upVotes;
+    public $downVotes;
 
-    /**
-     * Create a new component instance.
-     *
-     * @return void
-     */
-    public function __construct($image, $thumbnail, $username, $description)
+    public function __construct($image, $thumbnail, $username, $description, $id, $upVotes, $downVotes)
     {
         $this->username = $username;
         $this->description = $description;
         $this->image = $image;
         $this->thumbnail = $thumbnail;
+        $this->id = $id;
+        $this->upVotes = $upVotes;
+        $this->downVotes = $downVotes;
     }
 
-    /**
-     * Get the view / contents that represent the component.
-     *
-     * @return \Illuminate\Contracts\View\View|\Closure|string
-     */
     public function render()
     {
         return view('layouts.image-container');
