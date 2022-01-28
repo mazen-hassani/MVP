@@ -51,6 +51,15 @@
         </div>
 
         {{$slot}}
-
+        <script>
+            (function($){
+                $(document).ready(function() {
+                    $(window).on("Lightbox.prototype.showImage", function() {
+                        var btn = "<a style='position:absolute;top:24px;right:24px;' href='https://www.wonderplugin.com'><button class='redirectbtn'>Skip</button></a>";
+                        $(".html5-image").append(btn);
+                    });
+                });
+            })(jQuery);
+        </script>
     </body>
 </html>

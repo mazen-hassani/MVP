@@ -6,8 +6,12 @@
             @foreach($images as $image)
                 <x-image-container :image="$image->org_path"
                                    :thumbnail="$image->thumbnail_path"
-                                   username="test"
-                                   description="test" />
+                                   :username="$image->user->name"
+                                   :description="$image->description"
+                                   :id="$image->id"
+                                   :upVotes="$image->countUpVotes()"
+                                   :downVotes="$image->countDownVotes()">
+                </x-image-container>
             @endforeach
         </div>
     </div>

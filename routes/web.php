@@ -17,6 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', \App\Http\Controllers\WelcomeController::class);
 Route::get('/dashboard', \App\Http\Controllers\WelcomeController::class);
 
+Route::get('/{image}/up', [\App\Http\Controllers\VoteController::class, 'up']);
+Route::get('/{image}/down', [\App\Http\Controllers\VoteController::class, 'down']);
+
 Route::get('/error', function () {
     throw new Exception('ERROR');
 });

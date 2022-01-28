@@ -7,12 +7,21 @@
                         @if($username)
                             <p>submitted by {{ $username }}</p>
                         @endif
+                        {{$upVotes}}
+                        @auth()
+                            <a href="/{{$id}}/up"><button class='redirectbtn'>Like</button></a>>
+                        @endauth
+                        {{$downVotes}}
+                        @auth()
+                            <a href="/{{$id}}/down"><button class='redirectbtn'>Dislike</button></a>
+                        @endauth
                     </div>
                 </div>
                 <div class="image">
                     <img src={{"/storage".$thumbnail}}>
                 </div>
-            </div></a>
+            </div>
+        </a>
     </div>
 </div>
 
