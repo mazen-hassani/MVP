@@ -10,7 +10,6 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use Intervention\Image\ImageManager;
 use Intervention\Image\ImageManagerStatic;
 
 class Compress implements ShouldQueue
@@ -33,11 +32,11 @@ class Compress implements ShouldQueue
 
         $compressed_image = ImageManagerStatic::make(Storage::disk('public')->get($image->org_path));
         $crop_width = ($compressed_image->width() > $compressed_image->height()) ? $compressed_image->height() : $compressed_image->width();
-        $compressed_image->crop($crop_width, $crop_width )->resize(300, 300, function ($constraint) {
+        $compressed_image->crop($crop_width, $crop_width)->resize(300, 300, function ($constraint) {
             $constraint->aspectRatio();
         })->encode('jpg', 100);
 
-        $compressed_image= (new \Intervention\Image\ImageManager)->make($compressed_image)->colorize(-100, 0, 100);;
+        $compressed_image = (new \Intervention\Image\ImageManager())->make($compressed_image)->colorize(-100, 0, 100);
 
         $path = '/compressed/'.Str::uuid().'.jpg';
         Storage::disk('public')->put($path, $compressed_image);
